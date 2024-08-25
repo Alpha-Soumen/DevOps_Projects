@@ -1,14 +1,32 @@
-# nexus-demo
-This is my first Git Repository
-<br>
-DDLJ
-This tool utilizes several Azure services to streamline Azure networking management:
+# AWS Resource Lister
 
-1. Azure Identity
-The script uses Azure Identity to handle secure authentication to Azure services. This ensures that the interactions with Azure resources are authenticated securely.
+A simple Bash script to automate the process of listing resources in an AWS account. This script supports various AWS services and allows users to quickly retrieve information about their AWS resources.
 
-2. Azure Resource Management
-Azure Resource Management is employed to manage Azure resources programmatically. The script leverages this library to create and manage Azure resources such as virtual networks and network watchers.
+## Supported Services
 
-3. Azure Network Management
-The Azure Network Management library facilitates the configuratio
+The script currently supports listing resources for the following AWS services:
+- EC2
+- RDS
+- S3
+- CloudFront
+- VPC
+- IAM
+- Route53
+- CloudWatch
+- CloudFormation
+- Lambda
+- SNS
+- SQS
+- DynamoDB
+- EBS
+
+## Usage
+
+To use the script, you need to have the AWS CLI installed and configured. The script takes two arguments:
+1. **aws_region**: The AWS region where you want to list the resources.
+2. **aws_service**: The AWS service for which you want to list the resources.
+
+### Example
+
+```bash
+./aws-resource-lister.sh us-east-1 ec2
