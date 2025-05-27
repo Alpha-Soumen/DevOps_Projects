@@ -1,70 +1,162 @@
-# Getting Started with Create React App
+# 🚀 React App with Docker and Kubernetes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple React application, containerized with Docker, pushed to Docker Hub, and deployed to a local Kubernetes cluster using Minikube.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🏗️ Project Overview
 
-### `npm start`
+This project demonstrates how to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ Create a React app  
+✅ Containerize it with Docker  
+✅ Push it to Docker Hub  
+✅ Deploy it to Kubernetes (Minikube)  
+✅ Access the app locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📦 Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Make sure you have these installed:
 
-### `npm run build`
+- [Node.js](https://nodejs.org/)  
+- [Docker](https://www.docker.com/)  
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)  
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Setup Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1️⃣ Clone the Repository
 
-### `npm run eject`
+```bash
+git clone https://github.com/Alpha-Soumen/DevOps_Projects.git
+cd DevOps_Projects/React-docker-k8s-app/testapp
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+### 2️⃣ Install Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3️⃣ Run the App Locally
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+Visit [http://localhost:3000](http://localhost:3000).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🐳 Docker: Build and Push
 
-### Code Splitting
+### Build Docker Image
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+docker build -t soumenbhunia/react-k8s-app:latest .
+```
 
-### Analyzing the Bundle Size
+### Push to Docker Hub
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+docker login
+docker push soumenbhunia/react-k8s-app:latest
+```
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## ☸️ Kubernetes: Deploy with Minikube
 
-### Advanced Configuration
+### Start Minikube
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+minikube start
+```
 
-### Deployment
+### Create Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+kubectl create deployment react-k8s-app --image=soumenbhunia/react-k8s-app:latest
+```
 
-### `npm run build` fails to minify
+### Expose Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+kubectl expose deployment react-k8s-app --type=NodePort --port=3000
+```
+
+### Access the App
+
+```bash
+minikube service react-k8s-app
+```
+
+This will open your app in the browser!
+
+---
+
+## 🔎 Kubernetes Management
+
+### Check Pods, Deployments, and Services
+
+```bash
+kubectl get pods
+kubectl get deployments
+kubectl get services
+```
+
+### Clean Up
+
+```bash
+kubectl delete service react-k8s-app
+kubectl delete deployment react-k8s-app
+minikube stop
+```
+
+---
+
+## 🧩 Project Structure
+
+```
+testapp/
+├── Dockerfile
+├── README.md
+├── package.json
+├── public/
+│   └── index.html
+└── src/
+    ├── App.js
+    ├── index.js
+    └── ...
+```
+
+---
+
+## ⚙️ Additional Notes
+
+* If you face any issues with Minikube, restart it:
+
+  ```bash
+  minikube delete
+  minikube start
+  ```
+* You can also **build and test locally** without Docker/Kubernetes by using:
+
+  ```bash
+  npm start
+  ```
+
+---
+
+## 👨‍💻 Developed by
+
+* **Soumen Bhunia**
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin)](https://www.linkedin.com/in/soumen-bhunia/)
+ 
+
+---
+
