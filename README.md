@@ -1,32 +1,9 @@
-# AWS Resource Lister
+# DevOps Projects 🚀
 
-A simple Bash script to automate the process of listing resources in an AWS account. This script supports various AWS services and allows users to quickly retrieve information about their AWS resources.
+This repository is a collection of real-world **DevOps projects** that demonstrate how to build, containerize, automate, and deploy modern applications using a wide range of DevOps tools and practices.
 
-## Supported Services
+Whether you're learning DevOps, building a portfolio, or looking for implementation references, this repo will continue to grow with complete, practical project setups.
 
-The script currently supports listing resources for the following AWS services:
-- EC2
-- RDS
-- S3
-- CloudFront
-- VPC
-- IAM
-- Route53
-- CloudWatch
-- CloudFormation
-- Lambda
-- SNS
-- SQS
-- DynamoDB
-- EBS
+---
 
-## Usage
 
-To use the script, you need to have the AWS CLI installed and configured. The script takes two arguments:
-1. **aws_region**: The AWS region where you want to list the resources.
-2. **aws_service**: The AWS service for which you want to list the resources.
-
-### Example
-
-```bash
-./aws-resource-lister.sh us-east-1 ec2
